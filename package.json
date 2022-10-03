@@ -8,6 +8,8 @@
     "create-local": "graph create --node http://localhost:8020/ alto",
     "remove-local": "graph remove --node http://localhost:8020/ alto",
     "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 alto",
+    "create-canto": "graph create --node http://localhost:8020 canto/alto  --access-token $ACCESS_TOKEN",
+    "deploy-canto": "graph deploy --node http://localhost:8020 --ipfs http://localhost:5001 canto/alto --access-token $ACCESS_TOKEN",
     "test": "graph test"
   },
   "dependencies": {
