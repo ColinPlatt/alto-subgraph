@@ -4,17 +4,16 @@
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ alto",
-    "create-local": "graph create --node http://localhost:8020/ alto",
-    "remove-local": "graph remove --node http://localhost:8020/ alto",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 alto",
-    "create-canto": "graph create --node http://localhost:8020 canto/alto  --access-token $ACCESS_TOKEN",
-    "deploy-canto": "graph deploy --node http://localhost:8020 --ipfs http://localhost:5001 canto/alto --access-token $ACCESS_TOKEN",
+    "create-canto": "npx graph create --node http://localhost:8020 canto/alto  --access-token $ACCESS_TOKEN",
+    "deploy-canto": "npx graph deploy --node http://localhost:8020 --ipfs http://localhost:5001 canto/alto --access-token $ACCESS_TOKEN",
     "test": "graph test"
   },
   "dependencies": {
+    "@amxx/graphprotocol-utils": "^1.1.0",
     "@graphprotocol/graph-cli": "0.34.0",
     "@graphprotocol/graph-ts": "0.28.0"
   },
-  "devDependencies": { "matchstick-as": "0.5.0" }
+  "devDependencies": {
+    "matchstick-as": "0.5.0"
+  }
 }

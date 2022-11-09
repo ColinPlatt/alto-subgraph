@@ -8,6 +8,7 @@ dataSources:
     source:
       address: "0xd3495421e0a09eeb3b58ff8a8427ba6b411c3aae"
       abi: OffersV1
+      startBlock: 1000000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -47,6 +48,7 @@ dataSources:
     source:
       address: "0x296419c5ee412823ab21955b838510e6068db895"
       abi: AsksV1
+      startBlock: 1000000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -86,6 +88,7 @@ dataSources:
     source:
       address: "0xfD7a4F0e05D4F46B0e9371e0c47d994B61Ae0ebE"
       abi: ReserveAuctionCoreErc20
+      startBlock: 1000000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -126,6 +129,7 @@ dataSources:
     source:
       address: "0xA5633E0836d4Ea5d9ccf56b8362E879c274E759C"
       abi: ReserveAuctionCoreEth
+      startBlock: 1000000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -165,6 +169,7 @@ dataSources:
     source:
       address: "0x4b8d2eC249bB9d177084FAC07f9aD334Eb1d5FDF"
       abi: ReserveAuctionFindersEth
+      startBlock: 1000000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -205,6 +210,7 @@ dataSources:
     source:
       address: "0x26Fb58808cB04Fa68AB4cf4BE094316350542458"
       abi: ReserveAuctionFindersErc20
+      startBlock: 1000000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -245,6 +251,7 @@ dataSources:
     source:
       address: "0xB9A350B197BD90B454951547cc836462F86d2Ed9"
       abi: ReserveAuctionListingErc20
+      startBlock: 1000000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -285,6 +292,7 @@ dataSources:
     source:
       address: "0x6efB92180a73B6014F27beacc079c5dBEFb72B05"
       abi: ReserveAuctionListingEth
+      startBlock: 1000000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6

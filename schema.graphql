@@ -4,6 +4,24 @@ type ExampleEntity @entity {
   userA: Bytes! # address
   userB: Bytes! # address
 }
+
+type AskEvent {
+  AskEventType: AskEventType!
+  address: String!
+  collectionAddress: String!
+  tokenId: String!
+  properties: V3AskEventProperties!
+}
+
+union AskEventProperties = AskCreated | AskCanceled | AskPriceUpdated | AskFilled
+
+enum AskEventType {
+  ASK_CREATED
+  ASK_CANCELED
+  ASK_PRICE_UPDATED
+  ASK_FILLED
+}
+
 type AskCanceled @entity {
   id: ID!
   tokenContract: Bytes! # address
@@ -598,3 +616,70 @@ type ReserveAuctionListingEthRoyaltyPayout @entity {
   recipient: Bytes! # address
   amount: BigInt! # uint256
 }
+
+type RoyaltyPayout @entity {
+  id: ID!
+  tokenContract: Bytes! # address
+  tokenId: BigInt! # uint256
+  recipient: Bytes! # address
+  amount: BigInt! # uint256
+}
+
+type ExchangeExecuted @entity {
+  id: ID!
+  userA: Bytes! # address
+  userB: Bytes! # address
+  a_tokenContract: Bytes! # address
+  a_tokenId: BigInt! # uint256
+  a_amount: BigInt! # uint256
+  b_tokenContract: Bytes! # address
+  b_tokenId: BigInt! # uint256
+  b_amount: BigInt! # uint256
+}
+
+type OfferCanceled @entity {
+  id: ID!
+  tokenContract: Bytes! # address
+  tokenId: BigInt! # uint256
+  offer_id: BigInt! # uint256
+  offer_maker: Bytes! # address
+  offer_currency: Bytes! # address
+  offer_findersFeeBps: Int! # uint16
+  offer_amount: BigInt! # uint256
+}
+
+type OfferCreated @entity {
+  id: ID!
+  tokenContract: Bytes! # address
+  tokenId: BigInt! # uint256
+  offer_id: BigInt! # uint256
+  offer_maker: Bytes! # address
+  offer_currency: Bytes! # address
+  offer_findersFeeBps: Int! # uint16
+  offer_amount: BigInt! # uint256
+}
+
+type OfferFilled @entity {
+  id: ID!
+  tokenContract: Bytes! # address
+  tokenId: BigInt! # uint256
+  offer_id: BigInt! # uint256
+  taker: Bytes! # address
+  finder: Bytes! # address
+  offer_maker: Bytes! # address
+  offer_currency: Bytes! # address
+  offer_findersFeeBps: Int! # uint16
+  offer_amount: BigInt! # uint256
+}
+
+type OfferUpdated @entity {
+  id: ID!
+  tokenContract: Bytes! # address
+  tokenId: BigInt! # uint256
+  offer_id: BigInt! # uint256
+  offer_maker: Bytes! # address
+  offer_currency: Bytes! # address
+  offer_findersFeeBps: Int! # uint16
+  offer_amount: BigInt! # uint256
+}
+
