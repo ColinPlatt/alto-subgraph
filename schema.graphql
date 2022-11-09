@@ -5,23 +5,6 @@ type ExampleEntity @entity {
   userB: Bytes! # address
 }
 
-type AskEvent @entity {
-  AskEventType: AskEventType!
-  address: String!
-  collectionAddress: String!
-  tokenId: String!
-  properties: AskEventProperties!
-}
-
-union AskEventProperties = AskCreated | AskCanceled | AskPriceUpdated | AskFilled
-
-enum AskEventType {
-  ASK_CREATED
-  ASK_CANCELED
-  ASK_PRICE_UPDATED
-  ASK_FILLED
-}
-
 type AskCanceled @entity {
   id: ID!
   tokenContract: Bytes! # address
@@ -66,6 +49,26 @@ type AskPriceUpdated @entity {
   ask_askCurrency: Bytes! # address
   ask_findersFeeBps: Int! # uint16
   ask_askPrice: BigInt! # uint256
+}
+
+type AskEvent @entity(immutable: true) {
+  id: ID!
+  AskEventType: AskEventType!
+  tokenContract: Bytes! # address
+  tokenId: BigInt! # uint256
+  ask_seller: Bytes! # address
+  ask_sellerFundsRecipient: Bytes! # address
+  ask_askCurrency: Bytes! # address
+  ask_findersFeeBps: Int! # uint16
+  ask_askPrice: BigInt! # uint256
+}
+
+
+enum AskEventType {
+  ASK_CREATED
+  ASK_CANCELED
+  ASK_PRICE_UPDATED
+  ASK_FILLED
 }
 
 type AsksV1ExchangeExecuted @entity {
