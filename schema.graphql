@@ -10,7 +10,7 @@ type AskEvent {
   address: String!
   collectionAddress: String!
   tokenId: String!
-  properties: V3AskEventProperties!
+  properties: AskEventProperties!
 }
 
 union AskEventProperties = AskCreated | AskCanceled | AskPriceUpdated | AskFilled
