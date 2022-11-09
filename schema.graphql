@@ -1,13 +1,3 @@
-schema {
-  query: RootQuery
-}
-
-"""Exposes a URL that specifies the behaviour of this scalar."""
-directive @specifiedBy(
-  """The URL that specifies the behaviour of this scalar."""
-  url: String!
-) on SCALAR
-
 type ExampleEntity @entity {
   id: ID!
   count: BigInt!
@@ -15,7 +5,7 @@ type ExampleEntity @entity {
   userB: Bytes! # address
 }
 
-type AskEvent {
+type AskEvent @entity {
   AskEventType: AskEventType!
   address: String!
   collectionAddress: String!
