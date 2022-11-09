@@ -1,8 +1,8 @@
-type AskEvent @entity(immutable: true) {
+type Ask @entity(immutable: true) {
   id: ID!
-  AskEventType: AskEventType!
   tokenContract: Bytes! # address
   tokenId: BigInt! # uint256
+  ask_live: Boolean! # bool
   ask_seller: Bytes! # address
   ask_sellerFundsRecipient: Bytes! # address
   ask_askCurrency: Bytes! # address
@@ -10,6 +10,12 @@ type AskEvent @entity(immutable: true) {
   ask_askPrice: BigInt! # uint256
 }
 
+type AskEvent @entity {
+  id: ID!
+  eventType: AskEventType
+  time: Int!
+  ask: Ask
+}
 
 enum AskEventType {
   ASK_CREATED
@@ -17,5 +23,4 @@ enum AskEventType {
   ASK_PRICE_UPDATED
   ASK_FILLED
 }
-
 

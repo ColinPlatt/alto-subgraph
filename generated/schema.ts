@@ -11,7 +11,7 @@ import {
   BigDecimal
 } from "@graphprotocol/graph-ts";
 
-export class AskEvent extends Entity {
+export class Ask extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -19,18 +19,18 @@ export class AskEvent extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id != null, "Cannot save AskEvent entity without an ID");
+    assert(id != null, "Cannot save Ask entity without an ID");
     if (id) {
       assert(
         id.kind == ValueKind.STRING,
-        `Entities of type AskEvent must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
+        `Entities of type Ask must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
       );
-      store.set("AskEvent", id.toString(), this);
+      store.set("Ask", id.toString(), this);
     }
   }
 
-  static load(id: string): AskEvent | null {
-    return changetype<AskEvent | null>(store.get("AskEvent", id));
+  static load(id: string): Ask | null {
+    return changetype<Ask | null>(store.get("Ask", id));
   }
 
   get id(): string {
@@ -40,15 +40,6 @@ export class AskEvent extends Entity {
 
   set id(value: string) {
     this.set("id", Value.fromString(value));
-  }
-
-  get AskEventType(): string {
-    let value = this.get("AskEventType");
-    return value!.toString();
-  }
-
-  set AskEventType(value: string) {
-    this.set("AskEventType", Value.fromString(value));
   }
 
   get tokenContract(): Bytes {
@@ -67,6 +58,15 @@ export class AskEvent extends Entity {
 
   set tokenId(value: BigInt) {
     this.set("tokenId", Value.fromBigInt(value));
+  }
+
+  get ask_live(): boolean {
+    let value = this.get("ask_live");
+    return value!.toBoolean();
+  }
+
+  set ask_live(value: boolean) {
+    this.set("ask_live", Value.fromBoolean(value));
   }
 
   get ask_seller(): Bytes {
@@ -112,5 +112,80 @@ export class AskEvent extends Entity {
 
   set ask_askPrice(value: BigInt) {
     this.set("ask_askPrice", Value.fromBigInt(value));
+  }
+}
+
+export class AskEvent extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id != null, "Cannot save AskEvent entity without an ID");
+    if (id) {
+      assert(
+        id.kind == ValueKind.STRING,
+        `Entities of type AskEvent must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
+      );
+      store.set("AskEvent", id.toString(), this);
+    }
+  }
+
+  static load(id: string): AskEvent | null {
+    return changetype<AskEvent | null>(store.get("AskEvent", id));
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value!.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get eventType(): string | null {
+    let value = this.get("eventType");
+    if (!value || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toString();
+    }
+  }
+
+  set eventType(value: string | null) {
+    if (!value) {
+      this.unset("eventType");
+    } else {
+      this.set("eventType", Value.fromString(<string>value));
+    }
+  }
+
+  get time(): i32 {
+    let value = this.get("time");
+    return value!.toI32();
+  }
+
+  set time(value: i32) {
+    this.set("time", Value.fromI32(value));
+  }
+
+  get ask(): string | null {
+    let value = this.get("ask");
+    if (!value || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toString();
+    }
+  }
+
+  set ask(value: string | null) {
+    if (!value) {
+      this.unset("ask");
+    } else {
+      this.set("ask", Value.fromString(<string>value));
+    }
   }
 }
