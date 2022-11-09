@@ -1,4 +1,4 @@
-type Ask @entity(immutable: true) {
+type Ask @entity(immutable: false) {
   id: ID!
   tokenContract: Bytes! # address
   tokenId: BigInt! # uint256
