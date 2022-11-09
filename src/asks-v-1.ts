@@ -1,17 +1,25 @@
 import {
-  Ask as AskEvent
+  AskCanceled as AskCanceledEvent,
+  AskCreated as AskCreatedEvent,
+  AskFilled as AskFilledEvent,
+  AskPriceUpdated as AskPriceUpdatedEvent
 } from "../generated/AsksV1/AsksV1"
 import {
-  AskCanceled,
-  AskCreated,
-  AskFilled,
-  AskPriceUpdated,
+  AskEvent
 } from "../generated/schema"
 
 export function handleAsk(event: AskEvent): void {
-  let entity = new AskCanceled(
-    event.transaction.hash.toHex() + "-" + event.logIndex.toString()
-  )
+  let entity = AskEvent.load(event.params.uuid.toHex())
+
+  if (entity == null) {
+    entity = new Attestation(event.params.uuid.toHex())
+  }
+
+
+
+
+
+
   entity.tokenContract = event.params.tokenContract
   entity.tokenId = event.params.tokenId
   entity.ask_seller = event.params.ask.seller
