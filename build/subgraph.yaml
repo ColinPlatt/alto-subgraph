@@ -1,6 +1,6 @@
 specVersion: 0.0.4
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: AsksV1
@@ -17,7 +17,7 @@ dataSources:
         - AskEvent
       abis:
         - name: AsksV1
-          file: ./abis/AsksV1.json
+          file: AsksV1/abis/AsksV1.json
       eventHandlers:
         - event: AskCanceled(indexed address,indexed
             uint256,(address,address,address,uint16,uint256))
@@ -31,7 +31,7 @@ dataSources:
         - event: AskPriceUpdated(indexed address,indexed
             uint256,(address,address,address,uint16,uint256))
           handler: handleAskPriceUpdated
-      file: ./src/asks-v-1.ts
+      file: AsksV1/AsksV1.wasm
   - kind: ethereum
     name: OffersV1
     network: canto
@@ -50,7 +50,7 @@ dataSources:
         - OfferUpdated
       abis:
         - name: OffersV1
-          file: ./abis/OffersV1.json
+          file: OffersV1/abis/OffersV1.json
       eventHandlers:
         - event: OfferCanceled(indexed address,indexed uint256,indexed
             uint256,(address,address,uint16,uint256))
@@ -64,4 +64,4 @@ dataSources:
         - event: OfferUpdated(indexed address,indexed uint256,indexed
             uint256,(address,address,uint16,uint256))
           handler: handleOfferUpdated
-      file: ./src/offers-v-1.ts
+      file: OffersV1/OffersV1.wasm

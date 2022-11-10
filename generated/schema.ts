@@ -69,6 +69,24 @@ export class Ask extends Entity {
     this.set("ask_live", Value.fromBoolean(value));
   }
 
+  get buyer(): Bytes {
+    let value = this.get("buyer");
+    return value!.toBytes();
+  }
+
+  set buyer(value: Bytes) {
+    this.set("buyer", Value.fromBytes(value));
+  }
+
+  get finder(): Bytes {
+    let value = this.get("finder");
+    return value!.toBytes();
+  }
+
+  set finder(value: Bytes) {
+    this.set("finder", Value.fromBytes(value));
+  }
+
   get ask_seller(): Bytes {
     let value = this.get("ask_seller");
     return value!.toBytes();
@@ -186,6 +204,203 @@ export class AskEvent extends Entity {
       this.unset("ask");
     } else {
       this.set("ask", Value.fromString(<string>value));
+    }
+  }
+}
+
+export class Offer extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id != null, "Cannot save Offer entity without an ID");
+    if (id) {
+      assert(
+        id.kind == ValueKind.STRING,
+        `Entities of type Offer must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
+      );
+      store.set("Offer", id.toString(), this);
+    }
+  }
+
+  static load(id: string): Offer | null {
+    return changetype<Offer | null>(store.get("Offer", id));
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value!.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get tokenContract(): Bytes {
+    let value = this.get("tokenContract");
+    return value!.toBytes();
+  }
+
+  set tokenContract(value: Bytes) {
+    this.set("tokenContract", Value.fromBytes(value));
+  }
+
+  get tokenId(): BigInt {
+    let value = this.get("tokenId");
+    return value!.toBigInt();
+  }
+
+  set tokenId(value: BigInt) {
+    this.set("tokenId", Value.fromBigInt(value));
+  }
+
+  get offer_live(): boolean {
+    let value = this.get("offer_live");
+    return value!.toBoolean();
+  }
+
+  set offer_live(value: boolean) {
+    this.set("offer_live", Value.fromBoolean(value));
+  }
+
+  get offer_id(): BigInt {
+    let value = this.get("offer_id");
+    return value!.toBigInt();
+  }
+
+  set offer_id(value: BigInt) {
+    this.set("offer_id", Value.fromBigInt(value));
+  }
+
+  get taker(): Bytes {
+    let value = this.get("taker");
+    return value!.toBytes();
+  }
+
+  set taker(value: Bytes) {
+    this.set("taker", Value.fromBytes(value));
+  }
+
+  get finder(): Bytes {
+    let value = this.get("finder");
+    return value!.toBytes();
+  }
+
+  set finder(value: Bytes) {
+    this.set("finder", Value.fromBytes(value));
+  }
+
+  get offer_maker(): Bytes {
+    let value = this.get("offer_maker");
+    return value!.toBytes();
+  }
+
+  set offer_maker(value: Bytes) {
+    this.set("offer_maker", Value.fromBytes(value));
+  }
+
+  get offer_currency(): Bytes {
+    let value = this.get("offer_currency");
+    return value!.toBytes();
+  }
+
+  set offer_currency(value: Bytes) {
+    this.set("offer_currency", Value.fromBytes(value));
+  }
+
+  get offer_findersFeeBps(): i32 {
+    let value = this.get("offer_findersFeeBps");
+    return value!.toI32();
+  }
+
+  set offer_findersFeeBps(value: i32) {
+    this.set("offer_findersFeeBps", Value.fromI32(value));
+  }
+
+  get offer_amount(): BigInt {
+    let value = this.get("offer_amount");
+    return value!.toBigInt();
+  }
+
+  set offer_amount(value: BigInt) {
+    this.set("offer_amount", Value.fromBigInt(value));
+  }
+}
+
+export class OfferEvent extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id != null, "Cannot save OfferEvent entity without an ID");
+    if (id) {
+      assert(
+        id.kind == ValueKind.STRING,
+        `Entities of type OfferEvent must have an ID of type String but the id '${id.displayData()}' is of type ${id.displayKind()}`
+      );
+      store.set("OfferEvent", id.toString(), this);
+    }
+  }
+
+  static load(id: string): OfferEvent | null {
+    return changetype<OfferEvent | null>(store.get("OfferEvent", id));
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value!.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get eventType(): string | null {
+    let value = this.get("eventType");
+    if (!value || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toString();
+    }
+  }
+
+  set eventType(value: string | null) {
+    if (!value) {
+      this.unset("eventType");
+    } else {
+      this.set("eventType", Value.fromString(<string>value));
+    }
+  }
+
+  get time(): i32 {
+    let value = this.get("time");
+    return value!.toI32();
+  }
+
+  set time(value: i32) {
+    this.set("time", Value.fromI32(value));
+  }
+
+  get offer(): string | null {
+    let value = this.get("offer");
+    if (!value || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toString();
+    }
+  }
+
+  set offer(value: string | null) {
+    if (!value) {
+      this.unset("offer");
+    } else {
+      this.set("offer", Value.fromString(<string>value));
     }
   }
 }
