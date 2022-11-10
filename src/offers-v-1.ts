@@ -18,6 +18,7 @@ export function handleOfferCreated(event: OfferCreatedEvent): void {
   entity.tokenContract = event.params.tokenContract
   entity.tokenId = event.params.tokenId
   entity.offer_live = true
+  entity.offer_id = event.params.id
   entity.offer_maker = event.params.offer.maker
   entity.offer_currency = event.params.offer.currency
   entity.offer_findersFeeBps = event.params.offer.findersFeeBps
@@ -35,6 +36,7 @@ export function handleOfferCanceled(event: OfferCanceledEvent): void {
   entity.tokenContract = event.params.tokenContract
   entity.tokenId = event.params.tokenId
   entity.offer_live = false
+  entity.offer_id = event.params.id
   entity.offer_maker = event.params.offer.maker
   entity.offer_currency = event.params.offer.currency
   entity.offer_findersFeeBps = event.params.offer.findersFeeBps
@@ -52,6 +54,7 @@ export function handleOfferUpdated(event: OfferUpdatedEvent): void {
   entity.tokenContract = event.params.tokenContract
   entity.tokenId = event.params.tokenId
   entity.offer_live = true
+  entity.offer_id = event.params.id
   entity.offer_maker = event.params.offer.maker
   entity.offer_currency = event.params.offer.currency
   entity.offer_findersFeeBps = event.params.offer.findersFeeBps
@@ -69,6 +72,7 @@ export function handleOfferFilled(event: OfferFilledEvent): void {
   entity.tokenContract = event.params.tokenContract
   entity.tokenId = event.params.tokenId
   entity.offer_live = false
+  entity.offer_id = event.params.id
   entity.taker = event.params.taker
   entity.finder = event.params.finder
   entity.offer_maker = event.params.offer.maker
