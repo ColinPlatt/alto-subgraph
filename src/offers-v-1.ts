@@ -1,4 +1,4 @@
-import { ethereum } from "@graphprotocol/graph-ts"
+import { Address, ethereum } from "@graphprotocol/graph-ts"
 import {
   OfferCanceled as OfferCanceledEvent,
   OfferCreated as OfferCreatedEvent,
@@ -11,7 +11,6 @@ import {
 } from "../generated/schema"
 
 
-/*
 export function handleOfferCreated(event: OfferCreatedEvent): void {
   let entity = new Offer(
     event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString()
@@ -20,6 +19,8 @@ export function handleOfferCreated(event: OfferCreatedEvent): void {
   entity.tokenId = event.params.tokenId
   entity.offer_live = true
   entity.offer_id = event.params.id
+  entity.taker = Address.zero()
+  entity.finder = Address.zero()
   entity.offer_maker = event.params.offer.maker
   entity.offer_currency = event.params.offer.currency
   entity.offer_findersFeeBps = event.params.offer.findersFeeBps
@@ -38,6 +39,8 @@ export function handleOfferCanceled(event: OfferCanceledEvent): void {
   entity.tokenId = event.params.tokenId
   entity.offer_live = false
   entity.offer_id = event.params.id
+  entity.taker = Address.zero()
+  entity.finder = Address.zero()
   entity.offer_maker = event.params.offer.maker
   entity.offer_currency = event.params.offer.currency
   entity.offer_findersFeeBps = event.params.offer.findersFeeBps
@@ -56,6 +59,8 @@ export function handleOfferUpdated(event: OfferUpdatedEvent): void {
   entity.tokenId = event.params.tokenId
   entity.offer_live = true
   entity.offer_id = event.params.id
+  entity.taker = Address.zero()
+  entity.finder = Address.zero()
   entity.offer_maker = event.params.offer.maker
   entity.offer_currency = event.params.offer.currency
   entity.offer_findersFeeBps = event.params.offer.findersFeeBps
@@ -82,4 +87,3 @@ export function handleOfferFilled(event: OfferFilledEvent): void {
   entity.offer_amount = event.params.offer.amount
   entity.save()
 }
-*/

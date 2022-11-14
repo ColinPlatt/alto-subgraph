@@ -10,12 +10,6 @@ import {
   AskEvent,
 } from "../generated/schema"
 
-import {
-  Bytes,
-} from "@graphprotocol/graph-ts";
-
-
-
 
 export function handleAskCreated(event: AskCreatedEvent): void {
 
