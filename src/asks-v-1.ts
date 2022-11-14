@@ -1,4 +1,4 @@
-import { ethereum } from "@graphprotocol/graph-ts"
+import { Address, ethereum } from "@graphprotocol/graph-ts"
 import {
   AskCanceled as AskCanceledEvent,
   AskCreated as AskCreatedEvent,
@@ -7,17 +7,26 @@ import {
 } from "../generated/AsksV1/AsksV1"
 import {
   Ask,
-  AskEvent
+  AskEvent,
 } from "../generated/schema"
+
+import {
+  Bytes,
+} from "@graphprotocol/graph-ts";
+
+
 
 
 export function handleAskCreated(event: AskCreatedEvent): void {
+
   let entity = new Ask(
     event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString()
   )
   entity.tokenContract = event.params.tokenContract
   entity.tokenId = event.params.tokenId
   entity.ask_live = true
+  entity.buyer = Address.zero()
+  entity.finder = Address.zero()
   entity.ask_seller = event.params.ask.seller
   entity.ask_sellerFundsRecipient = event.params.ask.sellerFundsRecipient
   entity.ask_askCurrency = event.params.ask.askCurrency
@@ -36,6 +45,8 @@ export function handleAskCanceled(event: AskCanceledEvent): void {
   entity.tokenContract = event.params.tokenContract
   entity.tokenId = event.params.tokenId
   entity.ask_live = false
+  entity.buyer = Address.zero()
+  entity.finder = Address.zero()
   entity.ask_seller = event.params.ask.seller
   entity.ask_sellerFundsRecipient = event.params.ask.sellerFundsRecipient
   entity.ask_askCurrency = event.params.ask.askCurrency
@@ -54,6 +65,8 @@ export function handleAskPriceUpdated(event: AskPriceUpdatedEvent): void {
   entity.tokenContract = event.params.tokenContract
   entity.tokenId = event.params.tokenId
   entity.ask_live = true
+  entity.buyer = Address.zero()
+  entity.finder = Address.zero()
   entity.ask_seller = event.params.ask.seller
   entity.ask_sellerFundsRecipient = event.params.ask.sellerFundsRecipient
   entity.ask_askCurrency = event.params.ask.askCurrency
