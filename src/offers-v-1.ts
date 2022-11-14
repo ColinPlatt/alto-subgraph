@@ -11,6 +11,7 @@ import {
 } from "../generated/schema"
 
 
+/*
 export function handleOfferCreated(event: OfferCreatedEvent): void {
   let entity = new Offer(
     event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString()
@@ -81,3 +82,4 @@ export function handleOfferFilled(event: OfferFilledEvent): void {
   entity.offer_amount = event.params.offer.amount
   entity.save()
 }
+*/
