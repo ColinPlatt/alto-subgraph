@@ -10,13 +10,14 @@ type Ask @entity(immutable: false) {
   ask_askCurrency: Bytes! # address
   ask_findersFeeBps: Int! # uint16
   ask_askPrice: BigInt! # uint256
+  ask_events: [AskEvent!]! @derivedFrom(field: "ask")
 }
 
-type AskEvent @entity {
+type AskEvent @entity (immutable: true) {
   id: ID!
   eventType: AskEventType
-  time: Int!
-  ask: Ask
+  time: BigInt!
+  ask: Ask!
 }
 
 enum AskEventType {
@@ -38,13 +39,15 @@ type Offer @entity(immutable: false) {
   offer_currency: Bytes! # address
   offer_findersFeeBps: Int! # uint16
   offer_amount: BigInt! # uint256
+  offer_events: [OfferEvent!]! @derivedFrom(field: "offer")
+
 }
 
-type OfferEvent @entity {
+type OfferEvent @entity (immutable: true) {
   id: ID!
   eventType: AskEventType
-  time: Int!
-  offer: Offer
+  time: BigInt!
+  offer: Offer!
 }
 
 enum OfferEventType {

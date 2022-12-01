@@ -26,6 +26,16 @@ export function handleOfferCreated(event: OfferCreatedEvent): void {
   entity.offer_findersFeeBps = event.params.offer.findersFeeBps
   entity.offer_amount = event.params.offer.amount
   entity.save()
+
+  let ev = new OfferEvent(
+    event.block.number.toString().concat('-').concat(event.logIndex.toString())
+  )
+  ev.eventType = "OFFER_CREATED"
+  ev.time = event.block.timestamp
+  ev.offer = entity.id
+
+  ev.save()
+
 }
 
 export function handleOfferCanceled(event: OfferCanceledEvent): void {
@@ -46,6 +56,15 @@ export function handleOfferCanceled(event: OfferCanceledEvent): void {
   entity.offer_findersFeeBps = event.params.offer.findersFeeBps
   entity.offer_amount = event.params.offer.amount
   entity.save()
+
+  let ev = new OfferEvent(
+    event.block.number.toString().concat('-').concat(event.logIndex.toString())
+  )
+  ev.eventType = "OFFER_CANCELLED"
+  ev.time = event.block.timestamp
+  ev.offer = entity.id
+
+  ev.save()
 }
 
 export function handleOfferUpdated(event: OfferUpdatedEvent): void {
@@ -66,6 +85,15 @@ export function handleOfferUpdated(event: OfferUpdatedEvent): void {
   entity.offer_findersFeeBps = event.params.offer.findersFeeBps
   entity.offer_amount = event.params.offer.amount
   entity.save()
+
+  let ev = new OfferEvent(
+    event.block.number.toString().concat('-').concat(event.logIndex.toString())
+  )
+  ev.eventType = "OFFER_PRICE_UPDATED"
+  ev.time = event.block.timestamp
+  ev.offer = entity.id
+
+  ev.save()
 }
 
 export function handleOfferFilled(event: OfferFilledEvent): void {
@@ -86,4 +114,13 @@ export function handleOfferFilled(event: OfferFilledEvent): void {
   entity.offer_findersFeeBps = event.params.offer.findersFeeBps
   entity.offer_amount = event.params.offer.amount
   entity.save()
+
+  let ev = new OfferEvent(
+    event.block.number.toString().concat('-').concat(event.logIndex.toString())
+  )
+  ev.eventType = "OFFER_FILLED"
+  ev.time = event.block.timestamp
+  ev.offer = entity.id
+
+  ev.save()
 }

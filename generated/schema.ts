@@ -131,6 +131,15 @@ export class Ask extends Entity {
   set ask_askPrice(value: BigInt) {
     this.set("ask_askPrice", Value.fromBigInt(value));
   }
+
+  get ask_events(): Array<string> {
+    let value = this.get("ask_events");
+    return value!.toStringArray();
+  }
+
+  set ask_events(value: Array<string>) {
+    this.set("ask_events", Value.fromStringArray(value));
+  }
 }
 
 export class AskEvent extends Entity {
@@ -181,30 +190,22 @@ export class AskEvent extends Entity {
     }
   }
 
-  get time(): i32 {
+  get time(): BigInt {
     let value = this.get("time");
-    return value!.toI32();
+    return value!.toBigInt();
   }
 
-  set time(value: i32) {
-    this.set("time", Value.fromI32(value));
+  set time(value: BigInt) {
+    this.set("time", Value.fromBigInt(value));
   }
 
-  get ask(): string | null {
+  get ask(): string {
     let value = this.get("ask");
-    if (!value || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toString();
-    }
+    return value!.toString();
   }
 
-  set ask(value: string | null) {
-    if (!value) {
-      this.unset("ask");
-    } else {
-      this.set("ask", Value.fromString(<string>value));
-    }
+  set ask(value: string) {
+    this.set("ask", Value.fromString(value));
   }
 }
 
@@ -328,6 +329,15 @@ export class Offer extends Entity {
   set offer_amount(value: BigInt) {
     this.set("offer_amount", Value.fromBigInt(value));
   }
+
+  get offer_events(): Array<string> {
+    let value = this.get("offer_events");
+    return value!.toStringArray();
+  }
+
+  set offer_events(value: Array<string>) {
+    this.set("offer_events", Value.fromStringArray(value));
+  }
 }
 
 export class OfferEvent extends Entity {
@@ -378,29 +388,21 @@ export class OfferEvent extends Entity {
     }
   }
 
-  get time(): i32 {
+  get time(): BigInt {
     let value = this.get("time");
-    return value!.toI32();
+    return value!.toBigInt();
   }
 
-  set time(value: i32) {
-    this.set("time", Value.fromI32(value));
+  set time(value: BigInt) {
+    this.set("time", Value.fromBigInt(value));
   }
 
-  get offer(): string | null {
+  get offer(): string {
     let value = this.get("offer");
-    if (!value || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toString();
-    }
+    return value!.toString();
   }
 
-  set offer(value: string | null) {
-    if (!value) {
-      this.unset("offer");
-    } else {
-      this.set("offer", Value.fromString(<string>value));
-    }
+  set offer(value: string) {
+    this.set("offer", Value.fromString(value));
   }
 }

@@ -27,6 +27,15 @@ export function handleAskCreated(event: AskCreatedEvent): void {
   entity.ask_findersFeeBps = event.params.ask.findersFeeBps
   entity.ask_askPrice = event.params.ask.askPrice
   entity.save()
+
+  let ev = new AskEvent(
+    event.block.number.toString().concat('-').concat(event.logIndex.toString())
+  )
+  ev.eventType = "ASK_CREATED"
+  ev.time = event.block.timestamp
+  ev.ask = entity.id
+
+  ev.save()
 }
 
 export function handleAskCanceled(event: AskCanceledEvent): void {
@@ -47,6 +56,15 @@ export function handleAskCanceled(event: AskCanceledEvent): void {
   entity.ask_findersFeeBps = event.params.ask.findersFeeBps
   entity.ask_askPrice = event.params.ask.askPrice
   entity.save()
+
+  let ev = new AskEvent(
+    event.block.number.toString().concat('-').concat(event.logIndex.toString())
+  )
+  ev.eventType = "ASK_CANCELLED"
+  ev.time = event.block.timestamp
+  ev.ask = entity.id
+
+  ev.save()
 }
 
 export function handleAskPriceUpdated(event: AskPriceUpdatedEvent): void {
@@ -67,6 +85,15 @@ export function handleAskPriceUpdated(event: AskPriceUpdatedEvent): void {
   entity.ask_findersFeeBps = event.params.ask.findersFeeBps
   entity.ask_askPrice = event.params.ask.askPrice
   entity.save()
+
+  let ev = new AskEvent(
+    event.block.number.toString().concat('-').concat(event.logIndex.toString())
+  )
+  ev.eventType = "ASK_PRICE_UPDATED"
+  ev.time = event.block.timestamp
+  ev.ask = entity.id
+
+  ev.save()
 }
 
 export function handleAskFilled(event: AskFilledEvent): void {
@@ -87,4 +114,13 @@ export function handleAskFilled(event: AskFilledEvent): void {
   entity.ask_findersFeeBps = event.params.ask.findersFeeBps
   entity.ask_askPrice = event.params.ask.askPrice
   entity.save()
+
+  let ev = new AskEvent(
+    event.block.number.toString().concat('-').concat(event.logIndex.toString())
+  )
+  ev.eventType = "ASK_FILLED"
+  ev.time = event.block.timestamp
+  ev.ask = entity.id
+
+  ev.save()
 }
