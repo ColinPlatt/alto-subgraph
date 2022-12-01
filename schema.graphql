@@ -13,7 +13,7 @@ type Ask @entity(immutable: false) {
   ask_events: [AskEvent!]! @derivedFrom(field: "ask")
 }
 
-type AskEvent @entity (immutable: true) {
+type AskEvent @entity (immutable: false) {
   id: ID!
   eventType: AskEventType
   time: BigInt!
@@ -43,7 +43,7 @@ type Offer @entity(immutable: false) {
 
 }
 
-type OfferEvent @entity (immutable: true) {
+type OfferEvent @entity (immutable: false) {
   id: ID!
   eventType: AskEventType
   time: BigInt!
