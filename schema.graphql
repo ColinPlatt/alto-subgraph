@@ -45,7 +45,7 @@ type Offer @entity(immutable: false) {
 
 type OfferEvent @entity (immutable: false) {
   id: ID!
-  eventType: AskEventType
+  eventType: OfferEventType
   time: BigInt!
   offer: Offer!
 }
