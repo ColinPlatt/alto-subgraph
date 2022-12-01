@@ -60,7 +60,7 @@ export function handleOfferCanceled(event: OfferCanceledEvent): void {
   let ev = new OfferEvent(
     event.block.number.toString().concat('-').concat(event.logIndex.toString())
   )
-  ev.eventType = "OFFER_CANCELLED"
+  ev.eventType = "OFFER_CANCELED"
   ev.time = event.block.timestamp
   ev.offer = entity.id
 
