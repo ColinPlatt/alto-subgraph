@@ -64,6 +64,7 @@ export function handleAskCanceled(event: AskCanceledEvent): void {
   ev.time = event.block.timestamp
   ev.ask = entity.id
 
+  entity.save()
   ev.save()
 }
 
@@ -93,6 +94,7 @@ export function handleAskPriceUpdated(event: AskPriceUpdatedEvent): void {
   ev.time = event.block.timestamp
   ev.ask = entity.id
 
+  entity.save()
   ev.save()
 }
 
@@ -122,5 +124,6 @@ export function handleAskFilled(event: AskFilledEvent): void {
   ev.time = event.block.timestamp
   ev.ask = entity.id
 
+  entity.save()
   ev.save()
 }
