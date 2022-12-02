@@ -78,7 +78,7 @@ export function handleAskPriceUpdated(event: AskPriceUpdatedEvent): void {
 
   entity.tokenContract = event.params.tokenContract
   entity.tokenId = event.params.tokenId
-  entity.ask_live = false
+  entity.ask_live = true
   entity.buyer = Address.zero()
   entity.finder = Address.zero()
   entity.ask_seller = event.params.ask.seller
@@ -111,8 +111,8 @@ export function handleAskFilled(event: AskFilledEvent): void {
   entity.tokenContract = event.params.tokenContract
   entity.tokenId = event.params.tokenId
   entity.ask_live = false
-  entity.buyer = Address.zero()
-  entity.finder = Address.zero()
+  entity.buyer = event.params.buyer
+  entity.finder = event.params.finder
   entity.ask_seller = event.params.ask.seller
   entity.ask_sellerFundsRecipient = event.params.ask.sellerFundsRecipient
   entity.ask_askCurrency = event.params.ask.askCurrency
