@@ -6,6 +6,7 @@
     "build": "graph build",
     "create-canto": "npx graph create --node http://localhost:8020 canto/alto  --access-token $ACCESS_TOKEN",
     "deploy-canto": "npx graph deploy --node http://localhost:8020 --ipfs http://localhost:5001 canto/alto --access-token $ACCESS_TOKEN",
+    "remove-canto": "npx graph remove --node http://localhost:8020 canto/alto  --access-token $ACCESS_TOKEN",
     "test": "graph test"
   },
   "dependencies": {
