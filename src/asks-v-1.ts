@@ -43,30 +43,19 @@ export function handleAskCanceled(event: AskCanceledEvent): void {
   
   if (entity == null) {
     entity = new Ask(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString())
-    entity.tokenContract = event.params.tokenContract
-    entity.tokenId = event.params.tokenId
-    entity.ask_live = false
-    entity.buyer = Address.zero()
-    entity.finder = Address.zero()
-    entity.ask_seller = Address.zero()
-    entity.ask_sellerFundsRecipient = Address.zero()
-    entity.ask_askCurrency = Address.zero()
-    entity.ask_findersFeeBps = 0
-    entity.ask_askPrice = BigInt.zero()
-  } else {
-    entity.tokenContract = event.params.tokenContract
-    entity.tokenId = event.params.tokenId
-    entity.ask_live = false
-    entity.buyer = Address.zero()
-    entity.finder = Address.zero()
-    entity.ask_seller = event.params.ask.seller
-    entity.ask_sellerFundsRecipient = event.params.ask.sellerFundsRecipient
-    entity.ask_askCurrency = event.params.ask.askCurrency
-    entity.ask_findersFeeBps = event.params.ask.findersFeeBps
-    entity.ask_askPrice = event.params.ask.askPrice
   }
 
 
+  entity.tokenContract = event.params.tokenContract
+  entity.tokenId = event.params.tokenId
+  entity.ask_live = false
+  entity.buyer = Address.zero()
+  entity.finder = Address.zero()
+  entity.ask_seller = event.params.ask.seller
+  entity.ask_sellerFundsRecipient = event.params.ask.sellerFundsRecipient
+  entity.ask_askCurrency = event.params.ask.askCurrency
+  entity.ask_findersFeeBps = event.params.ask.findersFeeBps
+  entity.ask_askPrice = event.params.ask.askPrice
   entity.save()
 
   let ev = new AskEvent(
@@ -85,28 +74,18 @@ export function handleAskPriceUpdated(event: AskPriceUpdatedEvent): void {
   
   if (entity == null) {
     entity = new Ask(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString())
-    entity.tokenContract = event.params.tokenContract
-    entity.tokenId = event.params.tokenId
-    entity.ask_live = false
-    entity.buyer = Address.zero()
-    entity.finder = Address.zero()
-    entity.ask_seller = Address.zero()
-    entity.ask_sellerFundsRecipient = Address.zero()
-    entity.ask_askCurrency = Address.zero()
-    entity.ask_findersFeeBps = 0
-    entity.ask_askPrice = BigInt.zero()
-  } else {
-    entity.tokenContract = event.params.tokenContract
-    entity.tokenId = event.params.tokenId
-    entity.ask_live = false
-    entity.buyer = Address.zero()
-    entity.finder = Address.zero()
-    entity.ask_seller = event.params.ask.seller
-    entity.ask_sellerFundsRecipient = event.params.ask.sellerFundsRecipient
-    entity.ask_askCurrency = event.params.ask.askCurrency
-    entity.ask_findersFeeBps = event.params.ask.findersFeeBps
-    entity.ask_askPrice = event.params.ask.askPrice
-  }
+  } 
+
+  entity.tokenContract = event.params.tokenContract
+  entity.tokenId = event.params.tokenId
+  entity.ask_live = false
+  entity.buyer = Address.zero()
+  entity.finder = Address.zero()
+  entity.ask_seller = event.params.ask.seller
+  entity.ask_sellerFundsRecipient = event.params.ask.sellerFundsRecipient
+  entity.ask_askCurrency = event.params.ask.askCurrency
+  entity.ask_findersFeeBps = event.params.ask.findersFeeBps
+  entity.ask_askPrice = event.params.ask.askPrice
 
   entity.save()
 
@@ -126,29 +105,19 @@ export function handleAskFilled(event: AskFilledEvent): void {
   
    if (entity == null) {
     entity = new Ask(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString())
-    entity.tokenContract = event.params.tokenContract
-    entity.tokenId = event.params.tokenId
-    entity.ask_live = false
-    entity.buyer = Address.zero()
-    entity.finder = Address.zero()
-    entity.ask_seller = Address.zero()
-    entity.ask_sellerFundsRecipient = Address.zero()
-    entity.ask_askCurrency = Address.zero()
-    entity.ask_findersFeeBps = 0
-    entity.ask_askPrice = BigInt.zero()
-  } else {
-    entity.tokenContract = event.params.tokenContract
-    entity.tokenId = event.params.tokenId
-    entity.ask_live = false
-    entity.buyer = Address.zero()
-    entity.finder = Address.zero()
-    entity.ask_seller = event.params.ask.seller
-    entity.ask_sellerFundsRecipient = event.params.ask.sellerFundsRecipient
-    entity.ask_askCurrency = event.params.ask.askCurrency
-    entity.ask_findersFeeBps = event.params.ask.findersFeeBps
-    entity.ask_askPrice = event.params.ask.askPrice
-  }
+   } 
+    
 
+  entity.tokenContract = event.params.tokenContract
+  entity.tokenId = event.params.tokenId
+  entity.ask_live = false
+  entity.buyer = Address.zero()
+  entity.finder = Address.zero()
+  entity.ask_seller = event.params.ask.seller
+  entity.ask_sellerFundsRecipient = event.params.ask.sellerFundsRecipient
+  entity.ask_askCurrency = event.params.ask.askCurrency
+  entity.ask_findersFeeBps = event.params.ask.findersFeeBps
+  entity.ask_askPrice = event.params.ask.askPrice
   entity.save()
 
   let ev = new AskEvent(
