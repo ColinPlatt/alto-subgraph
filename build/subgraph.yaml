@@ -8,7 +8,7 @@ dataSources:
     source:
       address: "0x296419c5ee412823ab21955b838510e6068db895"
       abi: AsksV1
-      startBlock: 1700000
+      startBlock: 1500000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
