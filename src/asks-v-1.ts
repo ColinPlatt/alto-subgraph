@@ -72,7 +72,7 @@ export function handleAskCanceled(event: AskCanceledEvent): void {
   let ev = new AskEvent(
     event.block.number.toString().concat('-').concat(event.logIndex.toString())
   )
-  ev.eventType = "ASK_CANCELLED"
+  ev.eventType = "ASK_CANCELED"
   ev.time = event.block.timestamp
   ev.ask = entity.id
 
@@ -148,7 +148,7 @@ export function handleAskFilled(event: AskFilledEvent): void {
     entity.ask_findersFeeBps = event.params.ask.findersFeeBps
     entity.ask_askPrice = event.params.ask.askPrice
   }
-  
+
   entity.save()
 
   let ev = new AskEvent(
