@@ -12,9 +12,12 @@ import {
 
 
 export function handleOfferCreated(event: OfferCreatedEvent): void {
-  let entity = new Offer(
-    event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString()
-  )
+  let entity = Offer.load(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.offer.maker.toString())
+  
+  if (entity == null) {
+    entity = new Offer(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.offer.maker.toString())
+  }
+
   entity.tokenContract = event.params.tokenContract
   entity.tokenId = event.params.tokenId
   entity.offer_live = true
@@ -39,10 +42,10 @@ export function handleOfferCreated(event: OfferCreatedEvent): void {
 }
 
 export function handleOfferCanceled(event: OfferCanceledEvent): void {
-  let entity = Offer.load(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString())
+  let entity = Offer.load(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.offer.maker.toString())
   
   if (entity == null) {
-    entity = new Offer(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString())
+    entity = new Offer(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.offer.maker.toString())
   }
 
   entity.tokenContract = event.params.tokenContract
@@ -68,10 +71,10 @@ export function handleOfferCanceled(event: OfferCanceledEvent): void {
 }
 
 export function handleOfferUpdated(event: OfferUpdatedEvent): void {
-  let entity = Offer.load(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString())
+  let entity = Offer.load(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.offer.maker.toString())
   
   if (entity == null) {
-    entity = new Offer(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString())
+    entity = new Offer(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.offer.maker.toString())
   }
 
   entity.tokenContract = event.params.tokenContract
@@ -97,10 +100,10 @@ export function handleOfferUpdated(event: OfferUpdatedEvent): void {
 }
 
 export function handleOfferFilled(event: OfferFilledEvent): void {
-  let entity = Offer.load(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString())
+  let entity = Offer.load(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.offer.maker.toString())
   
   if (entity == null) {
-    entity = new Offer(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString())
+    entity = new Offer(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.offer.maker.toString())
   }
 
   entity.tokenContract = event.params.tokenContract
