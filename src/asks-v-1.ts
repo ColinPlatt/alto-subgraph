@@ -12,10 +12,10 @@ import {
 
 
 export function handleAskCreated(event: AskCreatedEvent): void {
-  let entity = Ask.load(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.ask.seller.toString())
+  let entity = Ask.load(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.ask.seller.toHex())
 
   if (entity == null) {
-    entity = new Ask(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.ask.seller.toString())
+    entity = new Ask(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.ask.seller.toHex())
   }
 
   entity.tokenContract = event.params.tokenContract
@@ -41,10 +41,10 @@ export function handleAskCreated(event: AskCreatedEvent): void {
 }
 
 export function handleAskCanceled(event: AskCanceledEvent): void {
-  let entity = Ask.load(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.ask.seller.toString())
+  let entity = Ask.load(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.ask.seller.toHex())
   
   if (entity == null) {
-    entity = new Ask(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.ask.seller.toString())
+    entity = new Ask(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.ask.seller.toHex())
   }
 
 
@@ -72,10 +72,10 @@ export function handleAskCanceled(event: AskCanceledEvent): void {
 }
 
 export function handleAskPriceUpdated(event: AskPriceUpdatedEvent): void {
-  let entity = Ask.load(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.ask.seller.toString())
+  let entity = Ask.load(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.ask.seller.toHex())
   
   if (entity == null) {
-    entity = new Ask(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.ask.seller.toString())
+    entity = new Ask(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.ask.seller.toHex())
   } 
 
   entity.tokenContract = event.params.tokenContract
@@ -103,10 +103,10 @@ export function handleAskPriceUpdated(event: AskPriceUpdatedEvent): void {
 }
 
 export function handleAskFilled(event: AskFilledEvent): void {
-  let entity = Ask.load(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.ask.seller.toString())
+  let entity = Ask.load(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.ask.seller.toHex())
   
    if (entity == null) {
-    entity = new Ask(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.ask.seller.toString())
+    entity = new Ask(event.params.tokenContract.toHex() + "-" + event.params.tokenId.toString() + "-" + event.params.ask.seller.toHex())
    } 
     
 
